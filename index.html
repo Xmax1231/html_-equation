@@ -1,0 +1,62 @@
+<html>
+<head>
+	<meta name=viewport content=user-scalable=0,width=600 charset=utf8>
+	<title>參數計算</title>
+	<link rel=icon href=p/3>
+	<style>
+	:focus{
+		outline:none
+	}
+	body,input,textarea{
+		background:#000;
+		color:#fff;
+		font-size:24
+	}
+	table,input,textarea{
+		width:100%;
+		border:0
+	}
+	table,th,td,#b{
+		border:1px solid #ddd;
+		color:#fff;
+		font-size:24;
+		font-family:monospace;
+		background:none;
+		text-align:center
+	}
+	th{
+		color:#f80
+	}
+	textarea{
+		resize:none
+	}
+	#b{
+		padding:10;
+		border-radius:5px
+	}
+	.t{
+		color:#aff;
+		text-align:left
+	}
+	</style>
+</head>
+<body onload=><center>
+<button id=b onclick=nt(prompt().split(';'))>new tab</button>
+	<div id=tb></div>
+</body>
+<script>
+	n=0;
+function nt(o,l,i,t=['','',''],b){
+	l=o[1].split(',');
+	for(i in l){
+		t[0]+='<th>'+l[i];
+		t[1]+='<td><input type=number id=t'+n+''+i+'>';
+		t[2]+='+t'+n+''+i+'.value,'
+	};
+	b=document.createElement('div');
+	b.innerHTML='<table><th colspan='+l.length+' class=t>t'+n+'___'+o[0]+'<tr>'+t[0]+'<tr>'+t[1]+'</table><table><td><textarea id=tf'+n+'></textarea><td onclick="this.innerText=eval(\'(function('+l.join(',')+'){return \'+tf'+n+'.value+\'}('+t[2]+'0))\')">	Ans</table>';
+	tb.appendChild(b);
+	n++
+}
+</script>
+</html>
