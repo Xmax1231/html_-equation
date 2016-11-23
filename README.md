@@ -1,1 +1,1 @@
-# html_-equation
+# html_equation
