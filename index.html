@@ -1,4 +1,4 @@
-<html> 
+<html>
 <head>
 	<meta name=viewport content=user-scalable=0,width=600 charset=utf8>
 	<title>參數計算</title>
@@ -46,17 +46,20 @@
 </body>
 <script>
 	n=0;
-function nt(o,l,i,t=['','',''],b){
-	l=o[1].split(',');
-	for(i in l){
-		t[0]+='<th>'+l[i];
-		t[1]+='<td><input type=number id=t'+n+''+i+'>';
-		t[2]+='+t'+n+''+i+'.value,'
-	};
-	b=document.createElement('div');
-	b.innerHTML='<table><th colspan='+l.length+' class=t>t'+n+'___'+o[0]+'<tr>'+t[0]+'<tr>'+t[1]+'</table><table><td><textarea id=tf'+n+'></textarea><td onclick="this.innerText=eval(\'(function('+l.join(',')+'){return \'+tf'+n+'.value+\'}('+t[2]+'0))\')">	Ans</table>';
-	tb.appendChild(b);
-	n++
-}
+	function nt(o,l,i,t=['','',''],b){
+		l=o[1].split(',');
+		for(i in l){
+			t[0]+='<th onclick="tf'+n+'.value+=\''+l[i]+'\'">'+l[i];
+			t[1]+='<td><input type=number id=t'+n+''+i+'>';
+			t[2]+='+t'+n+''+i+'.value,'
+		};
+		i++;
+		t[0]+='<th onclick="tf'+n+'.value+=\'Math.sqrt(\';tf'+n+'.value+=t'+n+''+i+'.value;tf'+n+'.value+=\')\'">'+'根號';
+		t[1]+='<td><input type=text id=t'+n+''+i+'>';
+		b=document.createElement('div');
+		b.innerHTML='<table><th colspan='+(l.length+1)+' class=t>t'+n+'___'+o[0]+'<tr>'+t[0]+'<tr>'+t[1]+'</table><table><td><textarea id=tf'+n+'></textarea><td onclick="this.innerText=eval(\'(function('+l.join(',')+'){return \'+tf'+n+'.value+\'}('+t[2]+'0))\')">Ans</table>';
+		tb.appendChild(b);
+		n++;
+	}
 </script>
 </html>
